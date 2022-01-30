@@ -4,6 +4,37 @@
   
   
   <entry>
+    <title>PicGo+GitHub/Gitee：你的最佳免费图床选择！</title>
+    <link href="/2022/01/30/PicGo-GitHub-Gitee%EF%BC%9A%E4%BD%A0%E7%9A%84%E6%9C%80%E4%BD%B3%E5%85%8D%E8%B4%B9%E5%9B%BE%E5%BA%8A%E9%80%89%E6%8B%A9%EF%BC%81/"/>
+    <url>/2022/01/30/PicGo-GitHub-Gitee%EF%BC%9A%E4%BD%A0%E7%9A%84%E6%9C%80%E4%BD%B3%E5%85%8D%E8%B4%B9%E5%9B%BE%E5%BA%8A%E9%80%89%E6%8B%A9%EF%BC%81/</url>
+    
+    <content type="html"><![CDATA[<p>写博客怎么少的了图床呢？之前用的是SM.MS图床，不过它的速度越来越堪忧，其他小众的就怕跑路，阿里云OSS这种又用不起，现在我用的是Github图床和Gitee图床，它俩不仅免费而且稳定，可以说是最佳免费图床的选择。</p><h1 id="一、简单介绍"><a href="#一、简单介绍" class="headerlink" title="一、简单介绍"></a>一、简单介绍</h1><h2 id="1、图床"><a href="#1、图床" class="headerlink" title="1、图床"></a>1、图床</h2><p>图床就是一个便于在博文中插入在线图片连接的个人图片仓库。设置图床之后，在自己博客中插入的图片链接就可以随时随地在线预览了，并且不会因为任何意外原因无法查看，除非自己亲自删除。</p><h2 id="2、PicGo"><a href="#2、PicGo" class="headerlink" title="2、PicGo"></a>2、PicGo</h2><p>这是一款图片上传的工具，目前支持SM.MS图床、微博图床、七牛图床、腾讯云COS、阿里云OSS、Imgur、又拍云、<code>GitHub</code>、<code>Gitee</code>等图床，未来将支持更多图床。</p><p>神奇的PicGo解决问题的思路就是，将本地的文件，或者剪切板上面的截图发送图床，然后生成在线图片的链接，这样就可以让<code>Markdown</code>文档飞起来了，走到哪就可以用到哪。</p><p><strong>下载PicGo：</strong><a href="https://github.com/Molunerfinn/PicGo/releases">https://github.com/Molunerfinn/PicGo/releases</a></p><blockquote><p>选择最新版本的2.3.1，但这个是内测版，推荐下载正式版2.3.0，稳定。</p></blockquote><p><img src="https://gitee.com/afengxz/images/raw/master/blog/003/03_2022-01-30.png"></p><p>安装过程我就不演示了，都是无脑“下一步”就行。</p><h1 id="二、PicGo-Gitee方案"><a href="#二、PicGo-Gitee方案" class="headerlink" title="二、PicGo+Gitee方案"></a>二、PicGo+Gitee方案</h1><figure class="highlight markdown"><table><tr><td class="gutter"><div class="code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></div></td><td class="code"><pre><code class="hljs markdown">&#123;% note secondary %&#125;<br>优势：Gitee是国内的代码托管平台，免费而且速度快；<br>不足：虽然不限容量，但是有一个限制，即单张图片大小超过1MB就无法通过外链显示。<br>&#123;% endnote %&#125;<br></code></pre></td></tr></table></figure><p>一般我们截的图都不会大于1MB的，所以问题不大！</p><p>接下来我们来操作一下如何配置Gitee图床：</p><h2 id="1、PicGo安装插件"><a href="#1、PicGo安装插件" class="headerlink" title="1、PicGo安装插件"></a>1、PicGo安装插件</h2><p>（1）先安装<a href="https://nodejs.org/zh-cn/">Node.js</a>，下载长期维护版的，没装的自己装一下，然后重启就行；</p><p><img src="https://gitee.com/afengxz/images/raw/master/blog/003/04_2022-01-30.png"></p><p>（2）打开picgo，下载gitee插件，</p><p><img src="https://gitee.com/afengxz/images/raw/master/blog/003/07_2021-11-25.png"></p><p>如下图所示，看到图床设置处有“Gitee”即是安装插件成功；</p><p><img src="https://gitee.com/afengxz/images/raw/master/blog/003/05_2022-01-30.png"></p><h2 id="2、配置PicGo"><a href="#2、配置PicGo" class="headerlink" title="2、配置PicGo"></a>2、配置PicGo</h2><p>（1）新建gitee图床仓库：</p><p>没有用过gitee的，先注册gitee：<a href="https://gitee.com/">https://gitee.com/</a> 账号，注册完成后登录，右上角新建仓库，</p><p><img src="https://gitee.com/afengxz/images/raw/master/blog/003/01_2022-01-29.png"></p><p>按照提示填写完成后，点击创建，</p><p><img src="https://gitee.com/afengxz/images/raw/master/blog/003/03_2022-01-29.png"></p><p>（2）创建图床仓库完成，打开PicGo的gitee设置，进行填写：</p><p><img src="https://gitee.com/afengxz/images/raw/master/blog/003/05_2022-01-29.png"></p><p>（3）配置token；</p><p>找到Gitee的设置，</p><p><img src="https://gitee.com/afengxz/images/raw/master/blog/003/06_2022-01-29.png"></p><p>找到设置中的私人令牌，点击“生成新令牌”，</p><p><img src="https://gitee.com/afengxz/images/raw/master/blog/003/07_2022-01-29.png"></p><p>按照提示填写信息，点击“提交”即可生成，</p><p><img src="https://gitee.com/afengxz/images/raw/master/blog/003/08_2022-01-29.png"></p><p>复制令牌并“Ctrl+v”填入PicGo中，</p><p><img src="https://gitee.com/afengxz/images/raw/master/blog/003/09_2022-01-29.png"></p><p>（4）PicGo中gitee设置注意：</p><ul><li><p>path：保存的文件夹路径，可填可不填，不填则默认保存在仓库的根目录下，填的话参考下图所示：</p><p><img src="https://gitee.com/afengxz/images/raw/master/blog/003/11_2022-01-29.png"></p></li><li><p>customPath：提交消息，这一项和下一项customURL都不用管。在提交到gitee后，会显示提交消息，插件默认提交的是 “Upload 图片名 by picGo - 时间”。</p></li></ul><p>（5）最后不要忘记点“确定”，然后拖拽图片到PicGo“上传区”试试看是否配置成功：</p><p><img src="https://gitee.com/afengxz/images/raw/master/blog/003/14_2022-01-29.png"></p><p>上传成功。</p><h1 id="三、PicGo-GitHub-jsDelivr方案"><a href="#三、PicGo-GitHub-jsDelivr方案" class="headerlink" title="三、PicGo+GitHub+jsDelivr方案"></a>三、PicGo+GitHub+jsDelivr方案</h1><p>我上面说了“一般我们截图的时候图片大小都不会超过1MB”，可有时候我们从网上下载的配图都是几MB甚至是几十MB的，尽管我们可以通过压缩图片的方式来减小图片大小，但凡事都有个例外；</p><p>如果我们的图片真的大于1MB了，Gitee图床就无法显示出来，这时候就需要用到GitHub图床方案了！</p><figure class="highlight markdown"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs markdown">&#123;% note secondary %&#125;<br>优势：GitHub是国外的代码托管平台，免费且不限制图片大小，外链都显示；<br>不足：GitHub在国内一直处于半墙的状态，访问速度特别慢。<br>&#123;% endnote %&#125;<br></code></pre></td></tr></table></figure><p>虽然GitHub访问速度慢，但是我们可以用CDN来加速，所以问题还是不大！</p><p>接下来我们来操作一下如何配置GitHub图床：</p><p>（1）PicGo已经内置支持GitHub了，所以在配置GitHub图床时就不用额外安装插件了；</p><p>（2）新建GitHub图床仓库：</p><p>没有用过GitHub的，先注册GitHub：<a href="https://github.com/">https://github.com/</a> 账号，注册完成后登录，右上角新建仓库，</p><p><img src="https://gitee.com/afengxz/images/raw/master/blog/003/15_2022-01-29.png"></p><p>按照提示填写完成后，点击”Create repository“创建，</p><p><img src="https://gitee.com/afengxz/images/raw/master/blog/003/16_2022-01-29.png"></p><p>（3）创建图床仓库完成，打开PicGo的github设置，进行填写：</p><p><img src="https://gitee.com/afengxz/images/raw/master/blog/003/17_2022-01-29.png"></p><p>（4）配置token：</p><p>如下图所示，找到token生成入口，</p><p><img src="https://gitee.com/afengxz/images/raw/master/blog/003/19_2022-01-29.png"></p><p><img src="https://gitee.com/afengxz/images/raw/master/blog/003/20_2022-01-29.png"></p><p>按照提示填写信息，然后点击下面的“提交”即可生成，</p><p><img src="https://gitee.com/afengxz/images/raw/master/blog/003/21_2022-01-29.png"></p><p>复制token并“Ctrl+v”填入PicGo中，</p><p><img src="https://gitee.com/afengxz/images/raw/master/blog/003/23_2022-01-29.png"></p><p>（5）指定存储路径：即图片保存的文件夹路径，可填可不填，不填则默认保存在仓库的根目录下，填的话参考下图所示：</p><p><img src="https://gitee.com/afengxz/images/raw/master/blog/003/06_2022-01-30.png"></p><p>（6）我们上面说了用CDN来加速，就是在这一步配置：</p><p><strong><a href="https://cdn.jsdelivr.net/gh/%E7%94%A8%E6%88%B7%E5%90%8D/%E5%9B%BE%E5%BA%8A%E4%BB%93%E5%BA%93%E5%90%8D/%E5%9B%BE%E7%89%87%E8%B7%AF%E5%BE%84">https://cdn.jsdelivr.net/gh/用户名/图床仓库名/图片路径</a></strong>来加速图片，</p><p>如下图所示，在“设定自定义域名”栏填入：<code>https://cdn.jsdelivr.net/用户名/图床仓库名</code></p><p><img src="https://gitee.com/afengxz/images/raw/master/blog/003/25_2022-01-29.png"></p><p>（7）最后不要忘记点“确定”，然后拖拽图片到PicGo“上传区”试试看是否配置成功：</p><p><img src="https://gitee.com/afengxz/images/raw/master/blog/003/07_2022-01-30.png"></p><h1 id="四、温馨提示"><a href="#四、温馨提示" class="headerlink" title="四、温馨提示"></a>四、温馨提示</h1><p><strong>如果第一次使用PicGo，请参考应用使用<a href="https://picgo.github.io/PicGo-Doc/zh/guide/getting-started.html">快速上手</a>。遇到问题了还可以看看<a href="https://github.com/Molunerfinn/PicGo/blob/dev/FAQ.md">FAQ</a>以及被关闭的<a href="https://github.com/Molunerfinn/PicGo/issues?q=is:issue+is:closed">issues</a>。</strong></p>]]></content>
+    
+    
+    <categories>
+      
+      <category>软件安装与配置</category>
+      
+    </categories>
+    
+    
+    <tags>
+      
+      <tag>PicGo</tag>
+      
+      <tag>GitHub</tag>
+      
+      <tag>Gitee</tag>
+      
+      <tag>图床</tag>
+      
+    </tags>
+    
+  </entry>
+  
+  
+  
+  <entry>
     <title>Android Studio的安装和使用教程</title>
     <link href="/2022/01/15/Android-Studio%E7%9A%84%E5%AE%89%E8%A3%85%E5%92%8C%E4%BD%BF%E7%94%A8%E6%95%99%E7%A8%8B/"/>
     <url>/2022/01/15/Android-Studio%E7%9A%84%E5%AE%89%E8%A3%85%E5%92%8C%E4%BD%BF%E7%94%A8%E6%95%99%E7%A8%8B/</url>
