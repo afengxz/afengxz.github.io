@@ -4,6 +4,35 @@
   
   
   <entry>
+    <title>Android Studio自定义APK的相关信息</title>
+    <link href="/posts/20220219a2/"/>
+    <url>/posts/20220219a2/</url>
+    
+    <content type="html"><![CDATA[<h2 id="1、apk文件名的修改"><a href="#1、apk文件名的修改" class="headerlink" title="1、apk文件名的修改"></a>1、apk文件名的修改</h2><p>Android studio默认生成的.apk文件名实在是太没有辨识度了，一般默认是<code>app-debug.apk</code>和<code>app-release.apk</code>这样的命名，真的不方便管理。</p><blockquote><p>我现在格式是这样的<br><code>所属项目_构建类型_应用版本_构建日期_构建时间</code><br>例如：</p><p><img src="https://gitee.com/afengxz/images/raw/master/blog/005/202202200028964.png" alt="04_2022-02-20"></p></blockquote><p>我这里使用Gradle配置文件修改默认命名格式以便更直观管理：</p><p>（1）在AS切换到<strong>Project</strong>目录下，找到<strong>app</strong>路径下的<strong>build.gradle</strong>文件；</p><p><img src="https://gitee.com/afengxz/images/raw/master/blog/005/202202200004930.png" alt="01_2022-02-20"></p><p>（1）先在<span  style="color: #FF0033; "><strong>android { …}</strong></span>节点外面加上下面的函数，作用是获取构建时间；</p><figure class="highlight java"><table><tr><td class="gutter"><div class="code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></div></td><td class="code"><pre><code class="hljs java"><span class="hljs-comment">//获取构建时间</span><br><span class="hljs-function">def <span class="hljs-title">generateTime</span><span class="hljs-params">()</span> </span>&#123;<br>    <span class="hljs-keyword">return</span> <span class="hljs-keyword">new</span> Date().format(<span class="hljs-string">&quot;yyyy-MM-dd_HH-mm&quot;</span>)<br></code></pre></td></tr></table></figure><div class="note note-secondary">            <p>代码中<code>yyyy-MM-dd_HH-mm</code>对应<code>年-月-日_时-分</code></p>          </div><p><img src="https://gitee.com/afengxz/images/raw/master/blog/005/202202200015037.png" alt="02_2022-02-20"></p><p>（2）再在<span  style="color: #FF0033; "><strong>android { …}</strong></span>节点里面加上下面一段代码</p><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-comment">// 自定义打包名称</span><br>android.applicationVariants.all &#123; variant -&gt;<br>    variant.outputs.all &#123;<br>        outputFileName = <span class="hljs-string">&quot;HelloWorld_$&#123;buildType.name&#125;_v$&#123;versionName&#125;_$&#123;generateTime()&#125;.apk&quot;</span><br>    &#125;<br>&#125;<br></code></pre></td></tr></table></figure><div class="note note-secondary">            <ul><li>HelloWorld：自定义（建议与项目有明显相关联）</li><li>${buildType.name}：当前构建类型（debug或release）</li><li>${versionName}：当前版本号</li><li>${generateTime()}：当前日期和时间</li></ul>          </div><p><img src="https://gitee.com/afengxz/images/raw/master/blog/005/202202200017770.png" alt="03_2022-02-20"></p><p>这样设置后，打包生成apk文件名可能有点长，不过你就能从这个apk的名字就能很直观的了解到很多信息：<strong>所属项目、构建类型、应用版本、构建日期时间</strong>。</p><p>这样你在自己测试管理或者发生给别人的时候就少了很多不必要的麻烦，降低扯皮和撕逼的概率。而你只需要简单配置一下即可，何乐而不为呢？</p><h2 id="2-APP版本号的修改"><a href="#2-APP版本号的修改" class="headerlink" title="2.APP版本号的修改"></a>2.APP版本号的修改</h2><p>在<strong>build.gradle</strong>中直接修改，</p><p><img src="https://gitee.com/afengxz/images/raw/master/blog/005/202202200053768.png" alt="07_2022-02-20"></p><div class="note note-secondary">            <p><strong>VersionCode</strong>：对消费者不可见，仅用于应用市场、程序内部识别版本，判断新旧等用途。<br><strong>VersionName</strong>：展示给消费者，消费者会通过它认知自己安装的版本。一般我们说的版本号就是指这个。</p>          </div><h2 id="3、APP应用名的修改"><a href="#3、APP应用名的修改" class="headerlink" title="3、APP应用名的修改"></a>3、APP应用名的修改</h2><p>直接在文件<strong>AndroidManifest.xml</strong>中的<strong>android:label=”@string/app_name”</strong>去修改即可，直接修改替换掉<strong>app_name</strong>即可，中、英文都是可以的；</p><p><img src="https://gitee.com/afengxz/images/raw/master/blog/005/202202200038744.png" alt="05_2022-02-20"></p><h2 id="4、APP图标的修改"><a href="#4、APP图标的修改" class="headerlink" title="4、APP图标的修改"></a>4、APP图标的修改</h2><p><strong>AndroidMenifest.xml</strong>中指定了该APP的图标：android:icon=”@mipmap/ic_launcher”，</p><p><strong>“mipmap/ic_launcher”</strong>对应了“Project/app/src/main/res”中的多个以<strong>“mipmap”</strong>开头的文件夹，如图，</p><p><img src="https://gitee.com/afengxz/images/raw/master/blog/005/202202200044848.png" alt="06_2022-02-20"></p><blockquote><p>hdpi、mdpi、xhdpi、xxhdpi和xxxhdpi的区别：</p><p>以上五个文件夹对应了不同屏幕密度下使用的图标。屏幕密度简称DPI，其全称为“Dots Per Inch”，表示“每英寸的像素点”，该值越大显示的图标则越清晰。</p><p>anydpi-v26  待整理；</p><p>hdpi表示屏幕密度是160；</p><p>hdpi表示屏幕密度是240；</p><p>xhdpi表示屏幕密度是320；</p><p>xxhdpi表示屏幕密度是480；</p><p>xxxhdpi表示屏幕密度是640。</p><p>不同文件夹下，保存了不同屏幕密度的图标。</p></blockquote><p><span  style="color: #009999; "><strong>推荐使用AS自带的Image Asset工具来快速制作APP图标，截图使用方法推荐观看B站UP主极客开发者的视频讲解</strong></span>：</p><div style="position: relative; width: 100%; height: 0; padding-bottom: 75%;"><iframe src="//player.bilibili.com/player.html?aid=48479144&bvid=BV1Wb41137GT&cid=84902289&page=1" scrolling="no" border="0" frameborder="no" framespacing="0" allowfullscreen="true" style="position: absolute; width: 100%; height: 100%; Left: 0; top: 0;" ></iframe></div>]]></content>
+    
+    
+    <categories>
+      
+      <category>软件使用技巧</category>
+      
+    </categories>
+    
+    
+    <tags>
+      
+      <tag>Android Studio</tag>
+      
+      <tag>学习</tag>
+      
+      <tag>APK</tag>
+      
+    </tags>
+    
+  </entry>
+  
+  
+  
+  <entry>
     <title>Android Studio签名打包APK（详解）</title>
     <link href="/posts/20220219a1/"/>
     <url>/posts/20220219a1/</url>
@@ -121,22 +150,22 @@
   
   
   <entry>
-    <title>关于</title>
+    <title>闲言碎语</title>
     <link href="/"/>
     <url>/</url>
     
-    <content type="html"><![CDATA[]]></content>
+    <content type="html"><![CDATA[<p style="text-align:center">记录自己不时冒出的一句话想法</p> ]]></content>
     
   </entry>
   
   
   
   <entry>
-    <title>闲言碎语</title>
+    <title>关于</title>
     <link href="/"/>
     <url>/</url>
     
-    <content type="html"><![CDATA[<p style="text-align:center">记录自己不时冒出的一句话想法</p> ]]></content>
+    <content type="html"><![CDATA[]]></content>
     
   </entry>
   
