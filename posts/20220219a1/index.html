@@ -18,14 +18,14 @@
   
     <meta name="description" content="Android Studio（后面都简称AS）生成APK在安卓应用开发中是必不可少的一个环节，本篇文章记录如何将我们的程序打包成Apk文件，并且为我们的Apk签名！">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Android Studio签名打包APK详解">
+<meta property="og:title" content="Android Studio签名打包APK（详解）">
 <meta property="og:url" content="https://afengxz.github.io/posts/20220219a1/index.html">
 <meta property="og:site_name" content="阿峰学长的博客">
 <meta property="og:description" content="Android Studio（后面都简称AS）生成APK在安卓应用开发中是必不可少的一个环节，本篇文章记录如何将我们的程序打包成Apk文件，并且为我们的Apk签名！">
 <meta property="og:locale" content="zh_CN">
 <meta property="og:image" content="https://gitee.com/afengxz/images/raw/master/blog/fm/004.png">
 <meta property="article:published_time" content="2022-02-19T11:00:15.000Z">
-<meta property="article:modified_time" content="2022-02-19T13:24:13.441Z">
+<meta property="article:modified_time" content="2022-02-19T13:40:10.243Z">
 <meta property="article:author" content="阿峰">
 <meta property="article:tag" content="Android Studio">
 <meta property="article:tag" content="学习">
@@ -34,7 +34,7 @@
 <meta name="twitter:image" content="https://gitee.com/afengxz/images/raw/master/blog/fm/004.png">
   
   
-  <title>Android Studio签名打包APK详解 - 阿峰学长的博客</title>
+  <title>Android Studio签名打包APK（详解） - 阿峰学长的博客</title>
 
   <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4/dist/css/bootstrap.min.css" />
 
@@ -240,7 +240,7 @@
       <div class="full-bg-img">
         <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
           <div class="page-header text-center fade-in-up">
-            <span class="h2" id="subtitle" title="Android Studio签名打包APK详解">
+            <span class="h2" id="subtitle" title="Android Studio签名打包APK（详解）">
               
             </span>
 
@@ -312,13 +312,13 @@
         <div class="py-5" id="board">
           <article class="post-content mx-auto">
             <!-- SEO header -->
-            <h1 style="display: none">Android Studio签名打包APK详解</h1>
+            <h1 style="display: none">Android Studio签名打包APK（详解）</h1>
             
             <div class="markdown-body">
               <p>Android Studio（后面都简称AS）生成APK在安卓应用开发中是必不可少的一个环节，本篇文章记录如何将我们的程序打包成Apk文件，并且为我们的Apk签名！</p>
 <span id="more"></span>
 
-<h1 id="一、简单科普"><a href="#一、简单科普" class="headerlink" title="一、简单科普"></a>一、简单科普</h1><h2 id="1、为什么要打包？"><a href="#1、为什么要打包？" class="headerlink" title="1、为什么要打包？"></a>1、为什么要打包？</h2><p>apk文件就是一个包，打包就是要生成apk文件，有了apk别人才能安装使用。打包分debug版和release包，==通常所说的打包指生成release版的apk==；</p>
+<h1 id="一、简单科普"><a href="#一、简单科普" class="headerlink" title="一、简单科普"></a>一、简单科普</h1><h2 id="1、为什么要打包？"><a href="#1、为什么要打包？" class="headerlink" title="1、为什么要打包？"></a>1、为什么要打包？</h2><p>apk文件就是一个包，打包就是要生成apk文件，有了apk别人才能安装使用。打包分debug版和release包，<strong>通常所说的打包指生成release版的apk</strong>；</p>
 <ul>
 <li><p><strong>Debug</strong>通常称为调试版本，通过一系列编译选项的配合，编译的结果通常包含调试信息，而且不做任何优化，以为开发 人员提供强大的应用程序调试能力。</p>
 </li>
@@ -344,25 +344,25 @@
 <p><img src="https://gitee.com/afengxz/images/raw/master/blog/004/202202191439869.png" srcset="/img/loading.gif" lazyload alt="13_2022-02-19"></p>
 <p><strong>好了，现在正式开始演示如何签名打包APK：</strong></p>
 <p>1、打开我们之前创建的项目helloworld，如果你不会创建新项目，可以看一下这篇文章：<a href="https://afengxz.github.io/posts/20220115a1/#4%E3%80%81%E6%96%B0%E5%BB%BA%E7%AC%AC%E4%B8%80%E4%B8%AA%E9%A1%B9%E7%9B%AE">Android Studio的安装和使用教程</a>；</p>
-<p>点击导航栏的<strong>Build→Generate Signed Bundle / APK…</strong></p>
+<p>点击导航栏的<strong>Build→Generate Signed Bundle / APK…</strong>；</p>
 <p><img src="https://gitee.com/afengxz/images/raw/master/blog/004/202202191448101.png" srcset="/img/loading.gif" lazyload alt="01_2022-02-18"></p>
-<p>2、选择<strong>APK</strong>，点击<strong>Next</strong></p>
+<p>2、选择<strong>APK</strong>，点击<strong>Next</strong>；</p>
 <p><img src="https://gitee.com/afengxz/images/raw/master/blog/004/202202191449004.png" srcset="/img/loading.gif" lazyload alt="02_2022-02-18"></p>
-<p>3、我们这是第一次打包，需要先创建一个签名文件key，点击<strong>Create new…</strong></p>
+<p>3、我们这是第一次打包，需要先创建一个签名文件key，点击<strong>Create new…</strong>，</p>
 <p><img src="https://gitee.com/afengxz/images/raw/master/blog/004/202202191456122.png" srcset="/img/loading.gif" lazyload alt="04_2022-02-18"></p>
-<p>如果你之前已经创建过key了，就直接点击**Choose existing…**选择相应的文件即可</p>
-<p>4、可以看到以下界面，我给大家稍微标注了一下，点击右上角的文件夹图标</p>
+<p>如果你之前已经创建过key了，就直接点击**Choose existing…**选择相应的文件即可；</p>
+<p>4、可以看到以下界面，我给大家稍微标注了一下，点击右上角的文件夹图标；</p>
 <p><img src="https://gitee.com/afengxz/images/raw/master/blog/004/202202191457384.png" srcset="/img/loading.gif" lazyload alt="06_2022-02-18"></p>
-<p>5、选择key的存放路径，以及自定义填写key的文件名</p>
+<p>5、选择key的存放路径，以及自定义填写key的文件名；</p>
 <p><img src="https://gitee.com/afengxz/images/raw/master/blog/004/202202191500470.png" srcset="/img/loading.gif" lazyload alt="07_2022-02-18"></p>
-<p>6、根据我上面的标注进行填写相关信息，可以将key密码和key别名密码设置为一样的，这样便于记忆，填写完成点击<strong>OK</strong></p>
+<p>6、根据我上面的标注进行填写相关信息，可以将key密码和key别名密码设置为一样的，这样便于记忆，填写完成点击<strong>OK</strong>；</p>
 <p><img src="https://gitee.com/afengxz/images/raw/master/blog/004/202202191501068.png" srcset="/img/loading.gif" lazyload alt="02_2022-02-19"></p>
 <p>7、如果出现这个弹窗，</p>
 <p><img src="https://gitee.com/afengxz/images/raw/master/blog/004/202202191505461.png" srcset="/img/loading.gif" lazyload alt="03_2022-02-19"></p>
 <p>AS 似乎希望我们将我们的 key 从 JKS 专有格式迁移到PKCS12 格式，这时候你有两种选择：</p>
 <p>（1）忽略不管，点击<strong>OK</strong>，直接进行第8步即可；</p>
 <p>（2）既然AS单独出来这个弹窗建议我们，那我们就接受它的建议呗：</p>
-<details cyan=""><summary> 点击展开具体操作步骤 </summary>
+<details class="folding-tag"><summary> 点击此处可展开具体操作步骤 </summary>
 <div class="content">
 <p><p>①先把弹窗上的双引号内的指令：</p>
 <p><code>keytool -importkeystore -srckeystore E:\Desktop\test\testkey.jks -destkeystore E:\Desktop\test\testkey.jks -deststoretype pkcs12</code></p>
