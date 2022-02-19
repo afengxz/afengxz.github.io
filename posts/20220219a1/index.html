@@ -25,7 +25,7 @@
 <meta property="og:locale" content="zh_CN">
 <meta property="og:image" content="https://gitee.com/afengxz/images/raw/master/blog/fm/004.png">
 <meta property="article:published_time" content="2022-02-19T11:00:15.000Z">
-<meta property="article:modified_time" content="2022-02-19T13:51:23.667Z">
+<meta property="article:modified_time" content="2022-02-19T17:40:26.907Z">
 <meta property="article:author" content="阿峰">
 <meta property="article:tag" content="Android Studio">
 <meta property="article:tag" content="学习">
@@ -341,24 +341,24 @@
 </blockquote>
 <h1 id="二、如何签名打包？"><a href="#二、如何签名打包？" class="headerlink" title="二、如何签名打包？"></a>二、如何签名打包？</h1><p>好的，因为我也是初学者，多渠道打包的方法以后再进行研究！本节只讲最简单的打包签名！</p>
 <p>对了，上面说的在运行程序在AVD中调试时默认生成的apk在：<code>app/build/outputs/apk/debug</code>目录下！</p>
-<p><img src="https://gitee.com/afengxz/images/raw/master/blog/004/202202191439869.png" srcset="/img/loading.gif" lazyload alt="13_2022-02-19"></p>
+<p><img src="https://gitee.com/afengxz/images/raw/master/blog/004/202202191439869.png" srcset="/img/loading.gif" lazyload></p>
 <p><strong>好了，现在正式开始演示如何签名打包APK：</strong></p>
 <p>1、打开我们之前创建的项目helloworld，如果你不会创建新项目，可以看一下这篇文章：<a href="https://afengxz.github.io/posts/20220115a1/#4%E3%80%81%E6%96%B0%E5%BB%BA%E7%AC%AC%E4%B8%80%E4%B8%AA%E9%A1%B9%E7%9B%AE">Android Studio的安装和使用教程</a>；</p>
 <p>点击导航栏的<strong>Build→Generate Signed Bundle / APK…</strong>；</p>
-<p><img src="https://gitee.com/afengxz/images/raw/master/blog/004/202202191448101.png" srcset="/img/loading.gif" lazyload alt="01_2022-02-18"></p>
+<p><img src="https://gitee.com/afengxz/images/raw/master/blog/004/202202191448101.png" srcset="/img/loading.gif" lazyload></p>
 <p>2、选择<strong>APK</strong>，点击<strong>Next</strong>；</p>
-<p><img src="https://gitee.com/afengxz/images/raw/master/blog/004/202202191449004.png" srcset="/img/loading.gif" lazyload alt="02_2022-02-18"></p>
+<p><img src="https://gitee.com/afengxz/images/raw/master/blog/004/202202191449004.png" srcset="/img/loading.gif" lazyload></p>
 <p>3、我们这是第一次打包，需要先创建一个签名文件key，点击<strong>Create new…</strong>，</p>
-<p><img src="https://gitee.com/afengxz/images/raw/master/blog/004/202202191456122.png" srcset="/img/loading.gif" lazyload alt="04_2022-02-18"></p>
+<p><img src="https://gitee.com/afengxz/images/raw/master/blog/004/202202191456122.png" srcset="/img/loading.gif" lazyload></p>
 <p>如果你之前已经创建过key了，就直接点击Choose existing…选择相应的文件即可；</p>
 <p>4、可以看到以下界面，我给大家稍微标注了一下，点击右上角的文件夹图标；</p>
-<p><img src="https://gitee.com/afengxz/images/raw/master/blog/004/202202191457384.png" srcset="/img/loading.gif" lazyload alt="06_2022-02-18"></p>
+<p><img src="https://gitee.com/afengxz/images/raw/master/blog/004/202202191457384.png" srcset="/img/loading.gif" lazyload></p>
 <p>5、选择key的存放路径，以及自定义填写key的文件名；</p>
-<p><img src="https://gitee.com/afengxz/images/raw/master/blog/004/202202191500470.png" srcset="/img/loading.gif" lazyload alt="07_2022-02-18"></p>
+<p><img src="https://gitee.com/afengxz/images/raw/master/blog/004/202202191500470.png" srcset="/img/loading.gif" lazyload></p>
 <p>6、根据我上面的标注进行填写相关信息，可以将key密码和key别名密码设置为一样的，这样便于记忆，填写完成点击<strong>OK</strong>；</p>
-<p><img src="https://gitee.com/afengxz/images/raw/master/blog/004/202202191501068.png" srcset="/img/loading.gif" lazyload alt="02_2022-02-19"></p>
+<p><img src="https://gitee.com/afengxz/images/raw/master/blog/004/202202191501068.png" srcset="/img/loading.gif" lazyload></p>
 <p>7、如果出现这个弹窗，</p>
-<p><img src="https://gitee.com/afengxz/images/raw/master/blog/004/202202191505461.png" srcset="/img/loading.gif" lazyload alt="03_2022-02-19"></p>
+<p><img src="https://gitee.com/afengxz/images/raw/master/blog/004/202202191505461.png" srcset="/img/loading.gif" lazyload></p>
 <p>AS 似乎希望我们将我们的 key 从 JKS 专有格式迁移到PKCS12 格式，这时候你有两种选择：</p>
 <p>（1）忽略不管，点击<strong>OK</strong>，直接进行第8步即可；</p>
 <p>（2）既然AS单独出来这个弹窗建议我们，那我们就接受它的建议呗：</p>
@@ -367,19 +367,19 @@
 <p><p>①先把弹窗上的双引号内的指令：</p>
 <p><code>keytool -importkeystore -srckeystore E:\Desktop\test\testkey.jks -destkeystore E:\Desktop\test\testkey.jks -deststoretype pkcs12</code></p>
 <p>打出来放好（每个人的路径和文件名都一样，不用偷懒直接使用我的，注意替换），点击<strong>OK</strong>，然后关闭弹窗</p>
-<p><img src="https://gitee.com/afengxz/images/raw/master/blog/004/202202191625573.png" srcset="/img/loading.gif" lazyload referrerpolicy="no-referrer" alt="17_2022-02-19"></p>
+<p><img src="https://gitee.com/afengxz/images/raw/master/blog/004/202202191625573.png" srcset="/img/loading.gif" lazyload referrerpolicy="no-referrer" alt=""></p>
 <p>②点击右上角的“X”号，把这个窗口也关闭</p>
-<p><img src="https://gitee.com/afengxz/images/raw/master/blog/004/202202191624084.png" srcset="/img/loading.gif" lazyload referrerpolicy="no-referrer" alt="18_2022-02-19"></p>
+<p><img src="https://gitee.com/afengxz/images/raw/master/blog/004/202202191624084.png" srcset="/img/loading.gif" lazyload referrerpolicy="no-referrer" alt=""></p>
 <p>③点击AS下面的<strong>Terminal</strong>，会出来一个运行窗口，</p>
-<p><img src="https://gitee.com/afengxz/images/raw/master/blog/004/202202191630530.png" srcset="/img/loading.gif" lazyload referrerpolicy="no-referrer" alt="19_2022-02-19"></p>
+<p><img src="https://gitee.com/afengxz/images/raw/master/blog/004/202202191630530.png" srcset="/img/loading.gif" lazyload referrerpolicy="no-referrer" alt=""></p>
 <p>④复制我们刚刚第①步打出来的双引号里面的指令，Ctrl+V粘贴进去，然后回车</p>
-<p><img src="https://gitee.com/afengxz/images/raw/master/blog/004/202202191633535.png" srcset="/img/loading.gif" lazyload referrerpolicy="no-referrer" alt="20_2022-02-19"></p>
+<p><img src="https://gitee.com/afengxz/images/raw/master/blog/004/202202191633535.png" srcset="/img/loading.gif" lazyload referrerpolicy="no-referrer" alt=""></p>
 <p>⑤输入我们之前设置的key文件的密码，然后回车</p>
-<p><img src="https://gitee.com/afengxz/images/raw/master/blog/004/202202191637059.png" srcset="/img/loading.gif" lazyload referrerpolicy="no-referrer" alt="21_2022-02-19"></p>
+<p><img src="https://gitee.com/afengxz/images/raw/master/blog/004/202202191637059.png" srcset="/img/loading.gif" lazyload referrerpolicy="no-referrer" alt=""></p>
 <p>⑥看到提示，即表示迁移成功</p>
-<p><img src="https://gitee.com/afengxz/images/raw/master/blog/004/202202191638350.png" srcset="/img/loading.gif" lazyload referrerpolicy="no-referrer" alt="22_2022-02-19"></p>
+<p><img src="https://gitee.com/afengxz/images/raw/master/blog/004/202202191638350.png" srcset="/img/loading.gif" lazyload referrerpolicy="no-referrer" alt=""></p>
 <p>⑦然后打开我们的key存放路径文件夹，我们在打包签名的时候，用上面的就行</p>
-<p><img src="https://gitee.com/afengxz/images/raw/master/blog/004/202202191640089.png" srcset="/img/loading.gif" lazyload referrerpolicy="no-referrer" alt="23_2022-02-19"></p>
+<p><img src="https://gitee.com/afengxz/images/raw/master/blog/004/202202191640089.png" srcset="/img/loading.gif" lazyload referrerpolicy="no-referrer" alt=""></p>
 <p>⑧回到AS，继续打包操作</p>
   <section style="font-family: &quot;Microsoft YaHei&quot;;font-size: medium;letter-spacing: 2px;color: rgb(0, 0, 0);text-align: start;white-space: normal;height: 24em;overflow: auto;">
     <p style="text-align: center;">
@@ -398,17 +398,17 @@
 </p>
 </div>
 </details>
-8、到这一步，需要我们填入刚刚设置的key密码了，如果你觉得每次打包都要输入密码有点麻烦的话，这里可以勾选记住密码，然后点击**Next**
 
-<p><img src="https://gitee.com/afengxz/images/raw/master/blog/004/202202191508210.png" srcset="/img/loading.gif" lazyload alt="10_2022-02-19"></p>
+<p>8、到这一步，需要我们填入刚刚设置的key密码了，如果你觉得每次打包都要输入密码有点麻烦的话，这里可以勾选记住密码，然后点击<strong>Next</strong></p>
+<p><img src="https://gitee.com/afengxz/images/raw/master/blog/004/202202191508210.png" srcset="/img/loading.gif" lazyload></p>
 <p>9、选择<strong>release</strong>，下面两个都勾选上（至于为什么？感兴趣的可以去了解一下：<a target="_blank" rel="noopener" href="https://www.jianshu.com/p/3a179acc7c4a">APK Signature Scheme v2 </a>），然后点击<strong>Finish</strong></p>
-<p><img src="https://gitee.com/afengxz/images/raw/master/blog/004/202202191509790.png" srcset="/img/loading.gif" lazyload alt="11_2022-02-19"></p>
+<p><img src="https://gitee.com/afengxz/images/raw/master/blog/004/202202191509790.png" srcset="/img/loading.gif" lazyload></p>
 <p>10、当你看到AS的右下角出现这个提示时，说明你的APK已经生成了，</p>
-<p><img src="https://gitee.com/afengxz/images/raw/master/blog/004/202202191517733.png" srcset="/img/loading.gif" lazyload alt="14_2022-02-19"></p>
+<p><img src="https://gitee.com/afengxz/images/raw/master/blog/004/202202191517733.png" srcset="/img/loading.gif" lazyload></p>
 <p>11、你可以在AS的app下看到多了一个release的文件夹，</p>
-<p><img src="https://gitee.com/afengxz/images/raw/master/blog/004/202202191522051.png" srcset="/img/loading.gif" lazyload alt="16_2022-02-19"></p>
+<p><img src="https://gitee.com/afengxz/images/raw/master/blog/004/202202191522051.png" srcset="/img/loading.gif" lazyload></p>
 <p>或者你在找到<code>项目保存路径\项目名\app\release</code>文件夹</p>
-<p><img src="https://gitee.com/afengxz/images/raw/master/blog/004/202202191522615.png" srcset="/img/loading.gif" lazyload alt="15_2022-02-19"></p>
+<p><img src="https://gitee.com/afengxz/images/raw/master/blog/004/202202191522615.png" srcset="/img/loading.gif" lazyload></p>
 <p>里面有个apk文件，就是你刚刚签名生成的，下面你可以复制发到自己的手机上或者发给你的朋友，然后下载就能在手机上安装使用了。</p>
 
             </div>
