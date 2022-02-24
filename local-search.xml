@@ -179,22 +179,22 @@
   
   
   <entry>
-    <title>闲言碎语</title>
+    <title>关于</title>
     <link href="/"/>
     <url>/</url>
     
-    <content type="html"><![CDATA[<p style="text-align:center"><b><font size="5px">记录自己不时冒出的一句话想法</font></b></p>]]></content>
+    <content type="html"><![CDATA[]]></content>
     
   </entry>
   
   
   
   <entry>
-    <title>关于</title>
+    <title>闲言碎语</title>
     <link href="/"/>
     <url>/</url>
     
-    <content type="html"><![CDATA[]]></content>
+    <content type="html"><![CDATA[<p style="text-align:center"><b><font size="5px">记录自己不时冒出的一句话想法</font></b></p>]]></content>
     
   </entry>
   
