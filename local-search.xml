@@ -156,32 +156,15 @@
     
     <categories>
       
-      <category>生活感悟</category>
+      <category>生活杂谈</category>
       
     </categories>
     
     
-    <tags>
-      
-      <tag>生活</tag>
-      
-    </tags>
-    
   </entry>
   
   
   
-  
-  
-  
-  <entry>
-    <title>关于</title>
-    <link href="/"/>
-    <url>/</url>
-    
-    <content type="html"><![CDATA[]]></content>
-    
-  </entry>
   
   
   
@@ -191,6 +174,17 @@
     <url>/</url>
     
     <content type="html"><![CDATA[<p><font size="4px"><strong>来而不往非礼也：</strong></font></p><ul><li>这是一个相对畅所欲言，绝对有留必应的留言区</li><li>在这里可以留下你的足迹，欢迎在下方留言，一起交流学习</li></ul><p><font size="4px"><strong>没有规矩不成方圆：</strong></font></p><ul><li>禁止发布广告信息</li><li>禁止在留言板下互喷</li><li>禁止发布／讨论色情低俗内容</li><li>禁止在留言板下以任何形式刷屏</li><li>禁止诋毁国家／政府、讨论宗教／政治等</li></ul>]]></content>
+    
+  </entry>
+  
+  
+  
+  <entry>
+    <title>关于</title>
+    <link href="/"/>
+    <url>/</url>
+    
+    <content type="html"><![CDATA[]]></content>
     
   </entry>
   
