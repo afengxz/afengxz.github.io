@@ -4,11 +4,11 @@
   
   
   <entry>
-    <title>Android 12无法安装自己打包生成的apk？</title>
+    <title>Android 12无法安装Android Studio打包生成的apk</title>
     <link href="/posts/20220304a1/"/>
     <url>/posts/20220304a1/</url>
     
-    <content type="html"><![CDATA[<h2 id="1、遇到问题"><a href="#1、遇到问题" class="headerlink" title="1、遇到问题"></a>1、遇到问题</h2><p>今天早上打包自己的一个Android项目后，发到我的手机（红米K30S，系统是MIUI12.5）上安装时，离奇的发现安装！</p><p><img src="https://gitee.com/afengxz/images/raw/master/blog/007/202203050013408.jpg"></p><p>我裂开了，因为我上个星期在打包这个项目时，安装是没有任何问题的，而这个项目我一直没有修改过，所以我当时真是一脸懵。</p><h2 id="2、发现问题"><a href="#2、发现问题" class="headerlink" title="2、发现问题"></a>2、发现问题</h2><p>通过反复的检查，我发现我打包的方法和打包的apk文件都是没有问题，于是，我让几个朋友拿他们的手机（小米10s、小米12、华为P30、魅族16s）帮我安装试试。结果是：两个小米手机都安装不了，而其他的两部（华为P30、魅族16s）都能装上。</p><p>这时候我突然发现，朋友的小米10s和小米12以及我的红米K30s都已经更新到了MIUI最新系统：MIUI 13；我一查才知道，<strong>我现在的手机系统MIUI 13是Android 12版本，之前的系统MIUI 12.5是Android 11版本</strong>。</p><h2 id="3、寻找原因"><a href="#3、寻找原因" class="headerlink" title="3、寻找原因"></a>3、寻找原因</h2><p>我想，肯定是Android版本更新时有一些功能和行为发生的变更对我的应用产生了影响，毕竟我之前未更新系统之前也是能安装的。</p><p>于是我去<a href="https://developer.android.com/about/versions/12/behavior-changes-12">Android官网</a>上查到这个：</p><p><img src="https://gitee.com/afengxz/images/raw/master/blog/007/202203050026491.png" alt="英文版"></p><p><img src="https://gitee.com/afengxz/images/raw/master/blog/007/202203050029318.png" alt="中文版"></p><p>即在 Android 12 中包含 <code>&lt;intent-filter&gt;</code> 的 <code>activity</code> 、 <code>service</code> 或 <code>receiver</code> 必须为这些应用组件显示声明 <code>android:exported</code> 属性，如下所示。</p><figure class="highlight java"><table><tr><td class="gutter"><div class="code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></div></td><td class="code"><pre><code class="hljs java">&lt;activity<br>    android:name=<span class="hljs-string">&quot;.TestActivity&quot;</span><br>    android:exported=<span class="hljs-string">&quot;false&quot;</span>&gt;<br>    &lt;intent-filter&gt;<br>        ......<br>    &lt;/intent-filter&gt;<br>&lt;/activity&gt;<br></code></pre></td></tr></table></figure><p>如果在包含 <code>&lt;intent-filter&gt;</code> 的 <code>activity</code> 、 <code>service</code> 或 <code>receiver</code> 组件中，没有显示声明 <code>android:exported</code> 的值，你的应用将无法安装，错误日志如下所示。</p><p><strong>为什么在Android 12 上需要显示声明 android:exported 属性？</strong></p><p>答案是<strong>存在安全性问题</strong>。</p><p><code>android:exported</code> 属性的默认值取决于是否包含 <code>&lt;intent-filter&gt;</code>，如果包含 <code>&lt;intent-filter&gt;</code> 那么默认值为 true，否则 false。</p><ul><li>当 <code>android:exported=&quot;true&quot;</code> 时，如果不做任何处理，可以接受来自其他 App 的访问</li><li>当 <code>android:exported=&quot;false&quot;</code> 时，限制为只接受来自同一个 App 或一个具有相同 <code>user ID</code> 的 App 的访问</li></ul><details black=""><summary> 点击此处 可展开案例 </summary><div class="content"><p><p>正因为 <code>android:exported</code> 的属性的默认值的问题，Twicca App 发生过一次安全性问题，因为另一个没有访问 SD 卡或网络权限的 App，可以通过 Twicca App 将存储在 SD 卡上的图片或电影上传到 Twicca 用户的 Twitter 账户上的社交网络上。</p><p>产生问题的代码如下所示：</p><div class="code-wrapper"><pre><code class='language-java' lang='java'>&lt;activity android:configChanges=&quot;keyboard|keyboardHidden|orientation&quot; android:name=&quot;.media.yfrog.YfrogUploadDialog&quot; android:theme=&quot;@style/Vulnerable.Dialog&quot; android:windowSoftInputMode=&quot;stateAlwaysHidden&quot;&gt;               &lt;intent-filter android:icon=&quot;@drawable/yfrog_icon&quot; android:label=&quot;@string/YFROG&quot;&gt;        &lt;action android:name=&quot;jp.co.vulnerable.ACTION_UPLOAD&quot; /&gt;                        &lt;category android:name=&quot;android.intent.category.DEFAULT&quot; /&gt;                        &lt;data android:mimeType=&quot;image/*&quot; /&gt;                        &lt;data android:mimeType=&quot;video/*&quot; /&gt;                &lt;/intent-filter&gt;        &lt;/activity&gt;</code></pre></div><p>&nbsp;</p><p>因为添加了 <code>intent-filter</code> 所以 <code>android:exported</code> 的属性的默认值为 true，因此可以接受来自其他 App 的访问，进而造成了上述问题（通过 Twicca App 将存储在 SD 卡上的图片或电影上传到 Twicca 用户的 Twitter 账户上的社交网络上）</p><p>这仅仅是关于 <code>activity</code> 的安全漏洞的其中一个，在不同的场景下利用这些漏洞做的事情也可能不一样。当然还有 <code>service</code> 和 <code>receiver</code> 组件也都是一样，存在安全性问题。——摘自互联网</p><p>&nbsp;</p></p></div></details><h2 id="4、解决问题"><a href="#4、解决问题" class="headerlink" title="4、解决问题"></a>4、解决问题</h2><p><span  style="color: #FF0033; ">在使用了intent-filter标签的Activity /Service/Receiver的Mainifest配置中添加 <code>android:exported=&quot;false&quot;</code> 属性：</span></p><p><img src="https://gitee.com/afengxz/images/raw/master/blog/007/202203050040210.png"></p><p>然后重新打包就可以正常安装了。</p><p><img src="https://gitee.com/afengxz/images/raw/master/blog/007/202203050040638.jpg"></p>]]></content>
+    <content type="html"><![CDATA[<h2 id="1、遇到问题"><a href="#1、遇到问题" class="headerlink" title="1、遇到问题"></a>1、遇到问题</h2><p>今天早上打包自己的一个Android项目后，发到我的手机（红米K30S，系统是MIUI12.5）上安装时，离奇的安装失败！</p><p><img src="https://gitee.com/afengxz/images/raw/master/blog/007/202203050013408.jpg"></p><p>我裂开了，因为我上个星期在打包这个项目时，安装是没有任何问题的，而这个项目我一直没有修改过，所以我当时真是一脸懵。</p><h2 id="2、发现问题"><a href="#2、发现问题" class="headerlink" title="2、发现问题"></a>2、发现问题</h2><p>通过反复的检查，我确定不是我打包的方法或打包的apk文件的问题，于是，我让几个朋友拿他们的手机（小米10s、小米12、华为P30、魅族16s）帮我安装试试。结果是：两个小米手机都安装不了，而其他的两部（华为P30、魅族16s）都能装上。</p><p>这时候我突然发现，朋友的小米10s和小米12以及我的红米K30s都已经更新到了MIUI最新系统：MIUI 13；我一查才知道，<strong>我现在的手机系统MIUI 13是Android 12版本，之前的系统MIUI 12.5是Android 11版本</strong>。</p><h2 id="3、寻找原因"><a href="#3、寻找原因" class="headerlink" title="3、寻找原因"></a>3、寻找原因</h2><p>我想，肯定是Android版本更新时有一些功能和行为发生的变更对我的应用产生了影响，毕竟我之前未更新系统之前也是能安装的。</p><p>于是我去<a href="https://developer.android.com/about/versions/12/behavior-changes-12">Android官网</a>上查到这个：</p><p><img src="https://gitee.com/afengxz/images/raw/master/blog/007/202203050026491.png" alt="英文版"></p><p><img src="https://gitee.com/afengxz/images/raw/master/blog/007/202203050029318.png" alt="中文版"></p><p>即在 Android 12 中包含 <code>&lt;intent-filter&gt;</code> 的 <code>activity</code> 、 <code>service</code> 或 <code>receiver</code> 必须为这些应用组件显示声明 <code>android:exported</code> 属性，如下所示。</p><figure class="highlight java"><table><tr><td class="gutter"><div class="code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></div></td><td class="code"><pre><code class="hljs java">&lt;activity<br>    android:name=<span class="hljs-string">&quot;.TestActivity&quot;</span><br>    android:exported=<span class="hljs-string">&quot;false&quot;</span>&gt;<br>    &lt;intent-filter&gt;<br>        ......<br>    &lt;/intent-filter&gt;<br>&lt;/activity&gt;<br></code></pre></td></tr></table></figure><p>如果在包含 <code>&lt;intent-filter&gt;</code> 的 <code>activity</code> 、 <code>service</code> 或 <code>receiver</code> 组件中，没有显示声明 <code>android:exported</code> 的值，你的应用将无法安装，错误日志如下所示。</p><p><strong>为什么在Android 12 上需要显示声明 android:exported 属性？</strong></p><p>答案是<strong>存在安全性问题</strong>。</p><p><code>android:exported</code> 属性的默认值取决于是否包含 <code>&lt;intent-filter&gt;</code>，如果包含 <code>&lt;intent-filter&gt;</code> 那么默认值为 true，否则 false。</p><ul><li>当 <code>android:exported=&quot;true&quot;</code> 时，如果不做任何处理，可以接受来自其他 App 的访问</li><li>当 <code>android:exported=&quot;false&quot;</code> 时，限制为只接受来自同一个 App 或一个具有相同 <code>user ID</code> 的 App 的访问</li></ul><details black=""><summary> 点击此处 可展开案例 </summary><div class="content"><p><p>正因为 <code>android:exported</code> 的属性的默认值的问题，Twicca App 发生过一次安全性问题，因为另一个没有访问 SD 卡或网络权限的 App，可以通过 Twicca App 将存储在 SD 卡上的图片或电影上传到 Twicca 用户的 Twitter 账户上的社交网络上。</p><p>产生问题的代码如下所示：</p><div class="code-wrapper"><pre><code class='language-java' lang='java'>&lt;activity android:configChanges=&quot;keyboard|keyboardHidden|orientation&quot; android:name=&quot;.media.yfrog.YfrogUploadDialog&quot; android:theme=&quot;@style/Vulnerable.Dialog&quot; android:windowSoftInputMode=&quot;stateAlwaysHidden&quot;&gt;               &lt;intent-filter android:icon=&quot;@drawable/yfrog_icon&quot; android:label=&quot;@string/YFROG&quot;&gt;        &lt;action android:name=&quot;jp.co.vulnerable.ACTION_UPLOAD&quot; /&gt;                        &lt;category android:name=&quot;android.intent.category.DEFAULT&quot; /&gt;                        &lt;data android:mimeType=&quot;image/*&quot; /&gt;                        &lt;data android:mimeType=&quot;video/*&quot; /&gt;                &lt;/intent-filter&gt;        &lt;/activity&gt;</code></pre></div><p>&nbsp;</p><p>因为添加了 <code>intent-filter</code> 所以 <code>android:exported</code> 的属性的默认值为 true，因此可以接受来自其他 App 的访问，进而造成了上述问题（通过 Twicca App 将存储在 SD 卡上的图片或电影上传到 Twicca 用户的 Twitter 账户上的社交网络上）</p><p>这仅仅是关于 <code>activity</code> 的安全漏洞的其中一个，在不同的场景下利用这些漏洞做的事情也可能不一样。当然还有 <code>service</code> 和 <code>receiver</code> 组件也都是一样，存在安全性问题。——摘自互联网</p><p>&nbsp;</p></p></div></details><h2 id="4、解决问题"><a href="#4、解决问题" class="headerlink" title="4、解决问题"></a>4、解决问题</h2><p><span  style="color: #FF0033; ">在使用了intent-filter标签的Activity /Service/Receiver的Mainifest配置中添加 <code>android:exported=&quot;false&quot;</code> 属性：</span></p><p><img src="https://gitee.com/afengxz/images/raw/master/blog/007/202203050040210.png"></p><p>然后重新打包就可以正常安装了。</p><p><img src="https://gitee.com/afengxz/images/raw/master/blog/007/202203050040638.jpg"></p>]]></content>
     
     
     <categories>
@@ -20,11 +20,11 @@
     
     <tags>
       
+      <tag>Android Studio</tag>
+      
       <tag>Java</tag>
       
       <tag>APK</tag>
-      
-      <tag>Android Studio</tag>
       
     </tags>
     
@@ -76,11 +76,11 @@
     
     <tags>
       
+      <tag>Android Studio</tag>
+      
       <tag>Java</tag>
       
       <tag>APK</tag>
-      
-      <tag>Android Studio</tag>
       
     </tags>
     
@@ -105,11 +105,11 @@
     
     <tags>
       
+      <tag>Android Studio</tag>
+      
       <tag>Java</tag>
       
       <tag>APK</tag>
-      
-      <tag>Android Studio</tag>
       
     </tags>
     
@@ -165,9 +165,9 @@
     
     <tags>
       
-      <tag>Java</tag>
-      
       <tag>Android Studio</tag>
+      
+      <tag>Java</tag>
       
     </tags>
     
@@ -198,22 +198,22 @@
   
   
   <entry>
-    <title>关于</title>
+    <title>留言板</title>
     <link href="/"/>
     <url>/</url>
     
-    <content type="html"><![CDATA[]]></content>
+    <content type="html"><![CDATA[<p><font size="4px"><strong>来而不往非礼也：</strong></font></p><ul><li>这是一个相对畅所欲言，绝对有留必应的留言区</li><li>在这里可以留下你的足迹，欢迎在下方留言，一起交流学习</li></ul><p><font size="4px"><strong>没有规矩不成方圆：</strong></font></p><ul><li>禁止发布广告信息</li><li>禁止在留言板下互喷</li><li>禁止发布／讨论色情低俗内容</li><li>禁止在留言板下以任何形式刷屏</li><li>禁止诋毁国家／政府、讨论宗教／政治等</li></ul>]]></content>
     
   </entry>
   
   
   
   <entry>
-    <title>留言板</title>
+    <title>关于</title>
     <link href="/"/>
     <url>/</url>
     
-    <content type="html"><![CDATA[<p><font size="4px"><strong>来而不往非礼也：</strong></font></p><ul><li>这是一个相对畅所欲言，绝对有留必应的留言区</li><li>在这里可以留下你的足迹，欢迎在下方留言，一起交流学习</li></ul><p><font size="4px"><strong>没有规矩不成方圆：</strong></font></p><ul><li>禁止发布广告信息</li><li>禁止在留言板下互喷</li><li>禁止发布／讨论色情低俗内容</li><li>禁止在留言板下以任何形式刷屏</li><li>禁止诋毁国家／政府、讨论宗教／政治等</li></ul>]]></content>
+    <content type="html"><![CDATA[]]></content>
     
   </entry>
   
