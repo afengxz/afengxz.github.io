@@ -209,22 +209,22 @@
   
   
   <entry>
-    <title>闲言碎语</title>
+    <title>留言板</title>
     <link href="/"/>
     <url>/</url>
     
-    <content type="html"><![CDATA[<p style="text-align:center"><b><font size="5px">记录自己不时冒出的一句话想法</font></b></p>]]></content>
+    <content type="html"><![CDATA[<p><font size="4px"><strong>来而不往非礼也：</strong></font></p><ul><li>这是一个相对畅所欲言，绝对有留必应的留言区</li><li>在这里可以留下你的足迹，欢迎在下方留言，一起交流学习</li></ul><p><font size="4px"><strong>没有规矩不成方圆：</strong></font></p><ul><li>禁止发布广告信息</li><li>禁止在留言板下互喷</li><li>禁止发布／讨论色情低俗内容</li><li>禁止在留言板下以任何形式刷屏</li></ul>]]></content>
     
   </entry>
   
   
   
   <entry>
-    <title>留言板</title>
+    <title>闲言碎语</title>
     <link href="/"/>
     <url>/</url>
     
-    <content type="html"><![CDATA[<p><font size="4px"><strong>来而不往非礼也：</strong></font></p><ul><li>这是一个相对畅所欲言，绝对有留必应的留言区</li><li>在这里可以留下你的足迹，欢迎在下方留言，一起交流学习</li></ul><p><font size="4px"><strong>没有规矩不成方圆：</strong></font></p><ul><li>禁止发布广告信息</li><li>禁止在留言板下互喷</li><li>禁止发布／讨论色情低俗内容</li><li>禁止在留言板下以任何形式刷屏</li><li>禁止诋毁国家／政府、禁止讨论宗教／政治等</li></ul>]]></content>
+    <content type="html"><![CDATA[<p style="text-align:center"><b><font size="5px">记录自己不时冒出的一句话想法</font></b></p>]]></content>
     
   </entry>
   
