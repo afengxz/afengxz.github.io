@@ -28,15 +28,21 @@
 <meta name="twitter:card" content="summary_large_image">
   
   
+    <meta name="referrer" content="no-referrer-when-downgrade">
+  
+  
   <title>阿峰的博客</title>
 
-  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4/dist/css/bootstrap.min.css" />
+  <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
+
+
 
 
 
 <!-- 主题依赖的图标库，不要自行修改 -->
+<!-- Do not modify the link that theme dependent icons -->
 
-<link rel="stylesheet" href="//at.alicdn.com/t/font_1749284_ba1fz6golrf.css">
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1749284_hj8rtnfg7um.css">
 
 
 
@@ -45,21 +51,40 @@
 
 <link  rel="stylesheet" href="/css/main.css" />
 
-<!-- 自定义样式保持在最底部 -->
+
+  <link id="highlight-css" rel="stylesheet" href="/css/highlight.css" />
+  
+    <link id="highlight-css-dark" rel="stylesheet" href="/css/highlight-dark.css" />
+  
+
+
 
 
   <script id="fluid-configs">
     var Fluid = window.Fluid || {};
-    var CONFIG = {"hostname":"afengxz.github.io","root":"/","version":"1.8.14","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":false},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"right","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"copy_btn":true,"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":false,"baidu":null,"google":null,"gtag":null,"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":null,"app_key":null,"server_url":null,"path":"window.location.pathname","ignore_local":false}},"search_path":"/local-search.xml"};
+    Fluid.ctx = Object.assign({}, Fluid.ctx)
+    var CONFIG = {"hostname":"afengxz.github.io","root":"/","version":"1.9.1","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":false,"scope":[]},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"left","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"code_language":{"enable":true,"default":"TEXT"},"copy_btn":true,"image_caption":{"enable":true},"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"placement":"right","headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":false,"follow_dnt":true,"baidu":null,"google":null,"gtag":null,"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":null,"app_key":null,"server_url":null,"path":"window.location.pathname","ignore_local":false}},"search_path":"/local-search.xml"};
+
+    if (CONFIG.web_analytics.follow_dnt) {
+      var dntVal = navigator.doNotTrack || window.doNotTrack || navigator.msDoNotTrack;
+      Fluid.ctx.dnt = dntVal && (dntVal.startsWith('1') || dntVal.startsWith('yes') || dntVal.startsWith('on'));
+    }
   </script>
   <script  src="/js/utils.js" ></script>
   <script  src="/js/color-schema.js" ></script>
+
+  
 <meta name="generator" content="Hexo 6.0.0"></head>
 
 
 <body>
-  <header style="height: 100vh;">
-    <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  
+
+  <header>
+    
+
+<div class="header-inner" style="height: 100vh;">
+  <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
   <div class="container">
     <a class="navbar-brand" href="/">
       <strong>阿峰的博客</strong>
@@ -213,6 +238,7 @@
               &nbsp;<i class="iconfont icon-search"></i>&nbsp;
             </a>
           </li>
+          
         
         
           <li class="nav-item" id="color-toggle-btn">
@@ -225,34 +251,40 @@
   </div>
 </nav>
 
-    <div class="banner" id="banner" parallax=true
-         style="background: url('https://gitee.com/afengxz/images/raw/master/blog/peizhi/home.jpg') no-repeat center center;
-           background-size: cover;">
-      <div class="full-bg-img">
-        <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
-          <div class="page-header text-center fade-in-up">
-            <span class="h2" id="subtitle" title="你知道的越多，你不知道的越多。">
-              
-            </span>
+  
 
-            
-          </div>
-
+<div id="banner" class="banner" parallax=true
+     style="background: url('https://gitee.com/afengxz/images/raw/master/blog/peizhi/home.jpg') no-repeat center center; background-size: cover;">
+  <div class="full-bg-img">
+    <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
+      <div class="banner-text text-center fade-in-up">
+        <div class="h2">
           
-            <div class="scroll-down-bar">
-              <i class="iconfont icon-arrowdown"></i>
-            </div>
+            <span id="subtitle" data-typed-text="你知道的越多，你不知道的越多。"></span>
           
         </div>
+
+        
       </div>
+
+      
+        <div class="scroll-down-bar">
+          <i class="iconfont icon-arrowdown"></i>
+        </div>
+      
     </div>
+  </div>
+</div>
+
+</div>
+
   </header>
 
   <main>
     
       <div class="container nopadding-x-md">
-        <div class="py-5" id="board"
-          style=margin-top:0>
+        <div id="board"
+          style="margin-top: 0">
           
           <div class="container">
             <div class="row">
@@ -264,7 +296,7 @@
     
     
       <div class="col-12 col-md-4 m-auto index-img">
-        <a href="/posts/20220304a1/" target="_blank">
+        <a href="/posts/20220304a1/" target="_self">
           <img src="https://gitee.com/afengxz/images/raw/master/blog/fm/007.png" srcset="/img/loading.gif" lazyload alt="安卓12无法安装Android Studio打包的apk">
         </a>
       </div>
@@ -272,17 +304,17 @@
     <article class="col-12 col-md-8 mx-auto index-info">
       <h1 class="index-header">
         
-        <a href="/posts/20220304a1/" target="_blank">
+        <a href="/posts/20220304a1/" target="_self">
           安卓12无法安装Android Studio打包的apk
         </a>
       </h1>
 
-      <p class="index-excerpt">
-        <a href="/posts/20220304a1/" target="_blank">
-          
+      
+      <a class="index-excerpt " href="/posts/20220304a1/" target="_self">
+        <div>
           记录安卓12版本安装apk出现的“安装失败(-22)”的原因和解决方法
-        </a>
-      </p>
+        </div>
+      </a>
 
       <div class="index-btm post-metas">
         
@@ -294,22 +326,36 @@
           </div>
         
         
-          <div class="post-meta mr-3">
+          <div class="post-meta mr-3 d-flex align-items-center">
             <i class="iconfont icon-category"></i>
             
-              <a href="/categories/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/">学习笔记</a>
-            
+
+<span class="category-chains">
+  
+  
+    
+      <span class="category-chain">
+        
+  <a href="/categories/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/" class="category-chain-item">学习笔记</a>
+  
+  
+
+      </span>
+    
+  
+</span>
+
           </div>
         
         
           <div class="post-meta">
             <i class="iconfont icon-tags"></i>
             
-              <a href="/tags/Android-Studio/">Android Studio</a>
+              <a href="/tags/Android-Studio/">#Android Studio</a>
             
-              <a href="/tags/Java/">Java</a>
+              <a href="/tags/Java/">#Java</a>
             
-              <a href="/tags/APK/">APK</a>
+              <a href="/tags/APK/">#APK</a>
             
           </div>
         
@@ -321,7 +367,7 @@
     
     
       <div class="col-12 col-md-4 m-auto index-img">
-        <a href="/posts/20220225a1/" target="_blank">
+        <a href="/posts/20220225a1/" target="_self">
           <img src="https://gitee.com/afengxz/images/raw/master/blog/fm/006.png" srcset="/img/loading.gif" lazyload alt="Visual Studio中scanf返回值被忽略">
         </a>
       </div>
@@ -329,17 +375,17 @@
     <article class="col-12 col-md-8 mx-auto index-info">
       <h1 class="index-header">
         
-        <a href="/posts/20220225a1/" target="_blank">
+        <a href="/posts/20220225a1/" target="_self">
           Visual Studio中scanf返回值被忽略
         </a>
       </h1>
 
-      <p class="index-excerpt">
-        <a href="/posts/20220225a1/" target="_blank">
-          
+      
+      <a class="index-excerpt " href="/posts/20220225a1/" target="_self">
+        <div>
           记录第一次使用Visual Studio 2019编写C语言程序时遇到的“scanf返回值被忽略”的问题，查询原因并总结几种解决方法。
-        </a>
-      </p>
+        </div>
+      </a>
 
       <div class="index-btm post-metas">
         
@@ -351,20 +397,34 @@
           </div>
         
         
-          <div class="post-meta mr-3">
+          <div class="post-meta mr-3 d-flex align-items-center">
             <i class="iconfont icon-category"></i>
             
-              <a href="/categories/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/">学习笔记</a>
-            
+
+<span class="category-chains">
+  
+  
+    
+      <span class="category-chain">
+        
+  <a href="/categories/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/" class="category-chain-item">学习笔记</a>
+  
+  
+
+      </span>
+    
+  
+</span>
+
           </div>
         
         
           <div class="post-meta">
             <i class="iconfont icon-tags"></i>
             
-              <a href="/tags/Visual-Studio/">Visual Studio</a>
+              <a href="/tags/Visual-Studio/">#Visual Studio</a>
             
-              <a href="/tags/C/">C</a>
+              <a href="/tags/C/">#C</a>
             
           </div>
         
@@ -376,7 +436,7 @@
     
     
       <div class="col-12 col-md-4 m-auto index-img">
-        <a href="/posts/20220219a2/" target="_blank">
+        <a href="/posts/20220219a2/" target="_self">
           <img src="https://gitee.com/afengxz/images/raw/master/blog/fm/005.png" srcset="/img/loading.gif" lazyload alt="Android Studio自定义APK的相关信息">
         </a>
       </div>
@@ -384,17 +444,17 @@
     <article class="col-12 col-md-8 mx-auto index-info">
       <h1 class="index-header">
         
-        <a href="/posts/20220219a2/" target="_blank">
+        <a href="/posts/20220219a2/" target="_self">
           Android Studio自定义APK的相关信息
         </a>
       </h1>
 
-      <p class="index-excerpt">
-        <a href="/posts/20220219a2/" target="_blank">
-          
+      
+      <a class="index-excerpt " href="/posts/20220219a2/" target="_self">
+        <div>
           包括apk文件名的修改、以及APP版本号和APP应用名的修改，还有APP图标的修改。
-        </a>
-      </p>
+        </div>
+      </a>
 
       <div class="index-btm post-metas">
         
@@ -406,22 +466,36 @@
           </div>
         
         
-          <div class="post-meta mr-3">
+          <div class="post-meta mr-3 d-flex align-items-center">
             <i class="iconfont icon-category"></i>
             
-              <a href="/categories/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/">学习笔记</a>
-            
+
+<span class="category-chains">
+  
+  
+    
+      <span class="category-chain">
+        
+  <a href="/categories/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/" class="category-chain-item">学习笔记</a>
+  
+  
+
+      </span>
+    
+  
+</span>
+
           </div>
         
         
           <div class="post-meta">
             <i class="iconfont icon-tags"></i>
             
-              <a href="/tags/Android-Studio/">Android Studio</a>
+              <a href="/tags/Android-Studio/">#Android Studio</a>
             
-              <a href="/tags/Java/">Java</a>
+              <a href="/tags/Java/">#Java</a>
             
-              <a href="/tags/APK/">APK</a>
+              <a href="/tags/APK/">#APK</a>
             
           </div>
         
@@ -433,7 +507,7 @@
     
     
       <div class="col-12 col-md-4 m-auto index-img">
-        <a href="/posts/20220219a1/" target="_blank">
+        <a href="/posts/20220219a1/" target="_self">
           <img src="https://gitee.com/afengxz/images/raw/master/blog/fm/004.png" srcset="/img/loading.gif" lazyload alt="Android Studio签名打包APK（详解）">
         </a>
       </div>
@@ -441,17 +515,17 @@
     <article class="col-12 col-md-8 mx-auto index-info">
       <h1 class="index-header">
         
-        <a href="/posts/20220219a1/" target="_blank">
+        <a href="/posts/20220219a1/" target="_self">
           Android Studio签名打包APK（详解）
         </a>
       </h1>
 
-      <p class="index-excerpt">
-        <a href="/posts/20220219a1/" target="_blank">
-          
+      
+      <a class="index-excerpt " href="/posts/20220219a1/" target="_self">
+        <div>
           Android Studio（后面都简称AS）生成APK在安卓应用开发中是必不可少的一个环节，本篇文章记录如何将我们的程序打包成Apk文件，并且为我们的Apk签名！
-        </a>
-      </p>
+        </div>
+      </a>
 
       <div class="index-btm post-metas">
         
@@ -463,22 +537,36 @@
           </div>
         
         
-          <div class="post-meta mr-3">
+          <div class="post-meta mr-3 d-flex align-items-center">
             <i class="iconfont icon-category"></i>
             
-              <a href="/categories/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/">学习笔记</a>
-            
+
+<span class="category-chains">
+  
+  
+    
+      <span class="category-chain">
+        
+  <a href="/categories/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/" class="category-chain-item">学习笔记</a>
+  
+  
+
+      </span>
+    
+  
+</span>
+
           </div>
         
         
           <div class="post-meta">
             <i class="iconfont icon-tags"></i>
             
-              <a href="/tags/Android-Studio/">Android Studio</a>
+              <a href="/tags/Android-Studio/">#Android Studio</a>
             
-              <a href="/tags/Java/">Java</a>
+              <a href="/tags/Java/">#Java</a>
             
-              <a href="/tags/APK/">APK</a>
+              <a href="/tags/APK/">#APK</a>
             
           </div>
         
@@ -490,7 +578,7 @@
     
     
       <div class="col-12 col-md-4 m-auto index-img">
-        <a href="/posts/20220130a1/" target="_blank">
+        <a href="/posts/20220130a1/" target="_self">
           <img src="https://gitee.com/afengxz/images/raw/master/blog/fm/003.png" srcset="/img/loading.gif" lazyload alt="PicGo+GitHub/Gitee：你的最佳免费图床选择">
         </a>
       </div>
@@ -498,17 +586,17 @@
     <article class="col-12 col-md-8 mx-auto index-info">
       <h1 class="index-header">
         
-        <a href="/posts/20220130a1/" target="_blank">
+        <a href="/posts/20220130a1/" target="_self">
           PicGo+GitHub/Gitee：你的最佳免费图床选择
         </a>
       </h1>
 
-      <p class="index-excerpt">
-        <a href="/posts/20220130a1/" target="_blank">
-          
+      
+      <a class="index-excerpt " href="/posts/20220130a1/" target="_self">
+        <div>
           写博客怎么少的了图床呢？之前用的是SM.MS图床，不过它的速度越来越堪忧，其他小众的就怕跑路，阿里云OSS这种又用不起，现在我用的是Github图床和Gitee图床，它俩不仅免费而且稳定，可以说是最佳免费图床的选择。
-        </a>
-      </p>
+        </div>
+      </a>
 
       <div class="index-btm post-metas">
         
@@ -520,24 +608,38 @@
           </div>
         
         
-          <div class="post-meta mr-3">
+          <div class="post-meta mr-3 d-flex align-items-center">
             <i class="iconfont icon-category"></i>
             
-              <a href="/categories/%E8%BD%AF%E4%BB%B6%E5%AE%89%E8%A3%85%E4%B8%8E%E9%85%8D%E7%BD%AE/">软件安装与配置</a>
-            
+
+<span class="category-chains">
+  
+  
+    
+      <span class="category-chain">
+        
+  <a href="/categories/%E8%BD%AF%E4%BB%B6%E5%AE%89%E8%A3%85%E4%B8%8E%E9%85%8D%E7%BD%AE/" class="category-chain-item">软件安装与配置</a>
+  
+  
+
+      </span>
+    
+  
+</span>
+
           </div>
         
         
           <div class="post-meta">
             <i class="iconfont icon-tags"></i>
             
-              <a href="/tags/PicGo/">PicGo</a>
+              <a href="/tags/PicGo/">#PicGo</a>
             
-              <a href="/tags/GitHub/">GitHub</a>
+              <a href="/tags/GitHub/">#GitHub</a>
             
-              <a href="/tags/Gitee/">Gitee</a>
+              <a href="/tags/Gitee/">#Gitee</a>
             
-              <a href="/tags/%E5%9B%BE%E5%BA%8A/">图床</a>
+              <a href="/tags/%E5%9B%BE%E5%BA%8A/">#图床</a>
             
           </div>
         
@@ -549,7 +651,7 @@
     
     
       <div class="col-12 col-md-4 m-auto index-img">
-        <a href="/posts/20220115a1/" target="_blank">
+        <a href="/posts/20220115a1/" target="_self">
           <img src="https://gitee.com/afengxz/images/raw/master/blog/fm/002.png" srcset="/img/loading.gif" lazyload alt="Android Studio的安装和使用教程">
         </a>
       </div>
@@ -557,17 +659,17 @@
     <article class="col-12 col-md-8 mx-auto index-info">
       <h1 class="index-header">
         
-        <a href="/posts/20220115a1/" target="_blank">
+        <a href="/posts/20220115a1/" target="_self">
           Android Studio的安装和使用教程
         </a>
       </h1>
 
-      <p class="index-excerpt">
-        <a href="/posts/20220115a1/" target="_blank">
-          
+      
+      <a class="index-excerpt " href="/posts/20220115a1/" target="_self">
+        <div>
           主要记录如何将Android Studio尽量安装在C盘之外；记录如何配置Android Studio项目调试所需的内置AVD、安卓模拟器和手机真机；记录Android Studio的完全卸载。
-        </a>
-      </p>
+        </div>
+      </a>
 
       <div class="index-btm post-metas">
         
@@ -579,20 +681,34 @@
           </div>
         
         
-          <div class="post-meta mr-3">
+          <div class="post-meta mr-3 d-flex align-items-center">
             <i class="iconfont icon-category"></i>
             
-              <a href="/categories/%E8%BD%AF%E4%BB%B6%E5%AE%89%E8%A3%85%E4%B8%8E%E9%85%8D%E7%BD%AE/">软件安装与配置</a>
-            
+
+<span class="category-chains">
+  
+  
+    
+      <span class="category-chain">
+        
+  <a href="/categories/%E8%BD%AF%E4%BB%B6%E5%AE%89%E8%A3%85%E4%B8%8E%E9%85%8D%E7%BD%AE/" class="category-chain-item">软件安装与配置</a>
+  
+  
+
+      </span>
+    
+  
+</span>
+
           </div>
         
         
           <div class="post-meta">
             <i class="iconfont icon-tags"></i>
             
-              <a href="/tags/Android-Studio/">Android Studio</a>
+              <a href="/tags/Android-Studio/">#Android Studio</a>
             
-              <a href="/tags/Java/">Java</a>
+              <a href="/tags/Java/">#Java</a>
             
           </div>
         
@@ -604,7 +720,7 @@
     
     
       <div class="col-12 col-md-4 m-auto index-img">
-        <a href="/posts/20220101a1/" target="_blank">
+        <a href="/posts/20220101a1/" target="_self">
           <img src="https://gitee.com/afengxz/images/raw/master/blog/fm/001.png" srcset="/img/loading.gif" lazyload alt="Hello Blog">
         </a>
       </div>
@@ -612,17 +728,17 @@
     <article class="col-12 col-md-8 mx-auto index-info">
       <h1 class="index-header">
         
-        <a href="/posts/20220101a1/" target="_blank">
+        <a href="/posts/20220101a1/" target="_self">
           Hello Blog
         </a>
       </h1>
 
-      <p class="index-excerpt">
-        <a href="/posts/20220101a1/" target="_blank">
-          
+      
+      <a class="index-excerpt " href="/posts/20220101a1/" target="_self">
+        <div>
           这是我的第一篇博客，关于我为什么要写博客？写博客的初衷是什么？写博客能给我带来什么？
-        </a>
-      </p>
+        </div>
+      </a>
 
       <div class="index-btm post-metas">
         
@@ -634,11 +750,25 @@
           </div>
         
         
-          <div class="post-meta mr-3">
+          <div class="post-meta mr-3 d-flex align-items-center">
             <i class="iconfont icon-category"></i>
             
-              <a href="/categories/%E7%94%9F%E6%B4%BB%E6%9D%82%E8%B0%88/">生活杂谈</a>
-            
+
+<span class="category-chains">
+  
+  
+    
+      <span class="category-chain">
+        
+  <a href="/categories/%E7%94%9F%E6%B4%BB%E6%9D%82%E8%B0%88/" class="category-chain-item">生活杂谈</a>
+  
+  
+
+      </span>
+    
+  
+</span>
+
           </div>
         
         
@@ -677,59 +807,61 @@
       <div class="modal-body mx-3">
         <div class="md-form mb-5">
           <input type="text" id="local-search-input" class="form-control validate">
-          <label data-error="x" data-success="v"
-                 for="local-search-input">关键词</label>
+          <label data-error="x" data-success="v" for="local-search-input">关键词</label>
         </div>
         <div class="list-group" id="local-search-result"></div>
       </div>
     </div>
   </div>
 </div>
+
     
 
     
   </main>
 
-  <footer class="text-center mt-5 py-3">
-  <div class="footer-content">
-     <a href="https://hexo.io" target="_blank" rel="nofollow noopener"><span>Hexo</span></a> <i class="iconfont icon-love"></i> <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener"><span>Fluid</span></a> <div style="font-size: 0.85rem"> <span id="timeDate">载入天数...</span> <span id="times">载入时分秒...</span> <script src="/js/duration.js"></script> </div> 
-  </div>
+  <footer>
+    <div class="footer-inner">
   
-  <div class="statistics">
-    
-    
-
-    
-      
-        <!-- 不蒜子统计PV -->
-        <span id="busuanzi_container_site_pv" style="display: none">
-            总访问量 
-            <span id="busuanzi_value_site_pv"></span>
-             次
-          </span>
-      
-      
-        <!-- 不蒜子统计UV -->
-        <span id="busuanzi_container_site_uv" style="display: none">
-            总访客数 
-            <span id="busuanzi_value_site_uv"></span>
-             人
-          </span>
-      
-    
-  </div>
-
-
+    <div class="footer-content">
+       <a href="https://hexo.io" target="_blank" rel="nofollow noopener"><span>Hexo</span></a> <i class="iconfont icon-love"></i> <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener"><span>Fluid</span></a> <div style="font-size: 0.85rem"> <span id="timeDate">载入天数...</span> <span id="times">载入时分秒...</span> <script src="/js/duration.js"></script> </div>    
+    </div>
+  
+  
+    <div class="statistics">
+  
   
 
   
-</footer>
-
-
-  <!-- SCRIPTS -->
+    
+      <span id="busuanzi_container_site_pv" style="display: none">
+        总访问量 
+        <span id="busuanzi_value_site_pv"></span>
+         次
+      </span>
+    
+    
+      <span id="busuanzi_container_site_uv" style="display: none">
+        总访客数 
+        <span id="busuanzi_value_site_uv"></span>
+         人
+      </span>
+    
+    
   
-  <script  src="https://cdn.jsdelivr.net/npm/nprogress@0/nprogress.min.js" ></script>
-  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/nprogress@0/nprogress.min.css" />
+</div>
+
+  
+  
+  
+</div>
+
+  </footer>
+
+  <!-- Scripts -->
+  
+  <script  src="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.js" ></script>
+  <link  rel="stylesheet" href="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.css" />
 
   <script>
     NProgress.configure({"showSpinner":false,"trickleSpeed":100})
@@ -740,42 +872,23 @@
   </script>
 
 
-<script  src="https://cdn.jsdelivr.net/npm/jquery@3/dist/jquery.min.js" ></script>
-<script  src="https://cdn.jsdelivr.net/npm/bootstrap@4/dist/js/bootstrap.min.js" ></script>
+<script  src="https://lib.baomitu.com/jquery/3.6.0/jquery.min.js" ></script>
+<script  src="https://lib.baomitu.com/twitter-bootstrap/4.6.1/js/bootstrap.min.js" ></script>
 <script  src="/js/events.js" ></script>
 <script  src="/js/plugins.js" ></script>
 
-<!-- Plugins -->
 
-
-  <script  src="/js/local-search.js" ></script>
-
-
-
-  
-    <script  src="/js/img-lazyload.js" ></script>
-  
-
-
-
-  
-
-
-
-
-
-  <script defer src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js" ></script>
-
-
-
-
-  <script  src="https://cdn.jsdelivr.net/npm/typed.js@2/lib/typed.min.js" ></script>
+  <script  src="https://lib.baomitu.com/typed.js/2.0.12/typed.min.js" ></script>
   <script>
     (function (window, document) {
       var typing = Fluid.plugins.typing;
-      var title = document.getElementById('subtitle').title;
+      var subtitle = document.getElementById('subtitle');
+      if (!subtitle || !typing) {
+        return;
+      }
+      var text = subtitle.getAttribute('data-typed-text');
       
-        typing(title);
+        typing(text);
       
     })(window, document);
   </script>
@@ -785,18 +898,30 @@
 
 
 
+  
+    <script  src="/js/img-lazyload.js" ></script>
+  
+
+
+
+
+  <script  src="/js/local-search.js" ></script>
+
+  <script defer src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js" ></script>
 
 
 
 
 
-
-
-
-
-<!-- 主题的启动项 保持在最底部 -->
+<!-- 主题的启动项，将它保持在最底部 -->
+<!-- the boot of the theme, keep it at the bottom -->
 <script  src="/js/boot.js" ></script>
 
 
+  
+
+  <noscript>
+    <div class="noscript-warning">博客在允许 JavaScript 运行的环境下浏览效果更佳</div>
+  </noscript>
 </body>
 </html>
